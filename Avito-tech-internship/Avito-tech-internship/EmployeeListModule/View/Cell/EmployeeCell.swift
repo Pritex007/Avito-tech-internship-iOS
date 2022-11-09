@@ -16,7 +16,7 @@ final class EmployeeCell: UITableViewCell {
             static let fontSize: CGFloat = 16
         }
         enum Cell {
-            static let leeadingTrailingIndent: CGFloat = 4
+            static let leadingTrailingIndent: CGFloat = 16
             static let topBottomIndent: CGFloat = 4
         }
     }
@@ -57,10 +57,10 @@ final class EmployeeCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: Constants.Cell.leeadingTrailingIndent,
-                                                                     left: Constants.Cell.topBottomIndent,
-                                                                     bottom: Constants.Cell.leeadingTrailingIndent,
-                                                                     right: Constants.Cell.topBottomIndent))
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: Constants.Cell.topBottomIndent,
+                                                                     left: Constants.Cell.leadingTrailingIndent,
+                                                                     bottom: Constants.Cell.topBottomIndent,
+                                                                     right: Constants.Cell.leadingTrailingIndent))
     }
     
     // MARK: Internal method
@@ -94,14 +94,16 @@ final class EmployeeCell: UITableViewCell {
         NSLayoutConstraint.activate([
             nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
             nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            nameLabel.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor),
+            nameLabel.trailingAnchor.constraint(lessThanOrEqualTo: phoneNumberLabel.trailingAnchor),
             
             skillLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             skillLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            skillLabel.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor),
+            skillLabel.trailingAnchor.constraint(lessThanOrEqualTo: phoneNumberLabel.trailingAnchor),
             
             phoneNumberLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            phoneNumberLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
+            phoneNumberLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            phoneNumberLabel.leadingAnchor.constraint(greaterThanOrEqualTo: nameLabel.trailingAnchor),
+            phoneNumberLabel.leadingAnchor.constraint(greaterThanOrEqualTo: skillLabel.trailingAnchor),
         ])
         
         nameLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
