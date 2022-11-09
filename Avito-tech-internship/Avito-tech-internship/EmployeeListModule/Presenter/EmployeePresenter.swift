@@ -50,7 +50,8 @@ extension EmployeePresenter: EmployeeListViewOutput {
                     do {
                         let decoder = JSONDecoder()
                         decoder.keyDecodingStrategy = .convertFromSnakeCase
-                        let data: ModelContainerData = try decoder.decode(ModelContainerData.self, from: rawData)
+                        var data: ModelContainerData = try decoder.decode(ModelContainerData.self, from: rawData)
+                        data.company.employees = data.company.employees.sorted(by: { $0.name < $1.name })
                         self?.model = data
                         
                         DispatchQueue.main.async {

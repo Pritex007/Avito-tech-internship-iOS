@@ -1,5 +1,5 @@
 import Foundation
 
 struct ModelContainerData: Codable {
-    let company: Company
+    var company: Company
 }

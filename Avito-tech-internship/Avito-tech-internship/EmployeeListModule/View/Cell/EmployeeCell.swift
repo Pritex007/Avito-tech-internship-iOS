@@ -7,7 +7,7 @@ final class EmployeeCell: UITableViewCell {
     
     private enum Constants {
         enum NameLabel {
-            static let fontSize: CGFloat = 18
+            static let fontSize: CGFloat = 16
         }
         enum SkillLabel {
             static let fontSize: CGFloat = 14
